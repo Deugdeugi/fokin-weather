@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { View, Text, StyleSheet, StatusBar, Button } from "react-native";
 import PropTypes from "prop-types";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -88,6 +88,7 @@ export default function Weather({ temp, condition, location }) {
           {weatherOptions[condition].subtitle}
         </Text>
       </View>
+      <div>You need to make a button</div>
     </LinearGradient>
   );
 }

@@ -4,6 +4,7 @@ import Loading from "./Loading";
 import Weather from "./Weather";
 import * as Location from "expo-location";
 import axios from "axios";
+import {API_KEY} from "@env"
 
 export default class extends React.Component {
   // React.Component 뒤에 () 붙이지 말자.
@@ -13,23 +14,17 @@ export default class extends React.Component {
   }
 
   getWeather = async (latitude, longitude) => {
-    // const {
-    //   data : {
-    //     main: { temp },
-    //     weather,
-    //     name
-    //   }
-    // } = await axios.get(
-    //   //`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=${API_KEY}&units=metric`
-    //   `https://api.openweathermap.org/data/2.5/forecast?lat=41.993433832404286&lon=128.077523728058&appid=${API_KEY}&units=metric`
-    // );
-
-    const data = await axios.get(
-      //`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=${API_KEY}&units=metric`
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
+    const {
+      data : {
+        main: { temp },
+        weather,
+        name
+      }
+    } = await axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
     );
 
-    console.log("info", data);
+    console.log("info", temp, weather, name);
 
     this.setState({
       isLoading: false,
